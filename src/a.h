@@ -1,7 +1,7 @@
 /**
  * @file: a.h
  *
- * @brief a is a prototype for a simple library module.
+ * @brief Declarations for the a module.
  */
 
 #ifndef _A_H_

@@ -1,7 +1,9 @@
-#include "unity.h"
 #include "fff.h"
+#include "unity.h"
 #include "a.h"  // You'll be faking these
 #include "b.h"  // You're testing these
+
+DEFINE_FFF_GLOBALS;
 
 // Faking a's functions
 FAKE_VOID_FUNC(a_init, a_ctx_t*);

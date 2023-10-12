@@ -28,13 +28,18 @@ $(OBJ_DIR)/a.o: src/a.c
 $(OBJ_DIR)/b.o: src/b.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-coverage: compile
+# Note: The source files be compiled with -fprofile_arcs and -ftest-coverage in
+# order to generate the .gcno files.  But the resulting executables must also
+# be run in order to generate the .gcda files.  Consequently, `run_tests` is a
+# prerequisite to the `coverage` target.
+#
+coverage: run_tests
 	mv $(OBJ_DIR)/*.gcno $(GCOV_DIR) || true
 	mv $(OBJ_DIR)/*.gcda $(GCOV_DIR) || true
 	gcov -o $(GCOV_DIR) -r $(OBJ_DIR)/*.o || true
 	mv *.gcov $(GCOV_DIR) || true
 
 clean:
-	rm -rf $(OBJ_DIR)
-	rm -rf $(BIN_DIR)
-	rm -rf $(GCOV_DIR)
+	rm -rf build
+	rm -f *.gcda *.gcno
+

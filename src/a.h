@@ -24,3 +24,5 @@ int a_get_count(a_ctx_t *a);
 #ifdef __cplusplus
 }
 #endif
+
+#endif // #ifndef _A_H_

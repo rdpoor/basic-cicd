@@ -38,9 +38,9 @@ void test_b_increment_count(void) {
 
 void test_b_get_count(void) {
     a_ctx_t a;
-    a_get_count_fake.return_val = 3;
+    a_get_count_fake.return_val = 5;
 
-    TEST_ASSERT_EQUAL(b_get_count(&a), 3);
+    TEST_ASSERT_EQUAL(b_get_count(&a), 5);
 }
 
 int main(void) {

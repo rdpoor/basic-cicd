@@ -1,0 +1,31 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    
+    - name: Install dependencies
+      run: sudo apt-get install -y gcc make lcov
+    
+    - name: Build and Test
+      run: |
+        make all
+        make coverage
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v2
+      with:
+        files: ./build/gcov/*.gcov
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: true

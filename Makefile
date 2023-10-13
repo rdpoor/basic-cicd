@@ -42,4 +42,3 @@ coverage: run_tests
 clean:
 	rm -rf build
 	rm -f *.gcda *.gcno
-

@@ -20,9 +20,11 @@ void tearDown(void) {}
 
 void test_b_init(void) {
     a_ctx_t a;
-    a_get_count_fake.return_val = 3;
+
     b_init(&a);
-    TEST_ASSERT_EQUAL(0, a_set_count_fake.arg1_val);
+
+    TEST_ASSERT_EQUAL(1, a_init_fake.call_count);
+    TEST_ASSERT_EQUAL_PTR(&a, a_init_fake.arg0_val);
 }
 
 void test_b_increment_count(void) {
@@ -38,9 +40,13 @@ void test_b_increment_count(void) {
 
 void test_b_get_count(void) {
     a_ctx_t a;
-    a_get_count_fake.return_val = 3;
+    a_get_count_fake.return_val = 5;
 
-    TEST_ASSERT_EQUAL(b_get_count(&a), 3);
+    int result = b_get_count(&a);
+
+    TEST_ASSERT_EQUAL(5, result);
+    TEST_ASSERT_EQUAL(1, a_get_count_fake.call_count);
+    TEST_ASSERT_EQUAL_PTR(&a, a_get_count_fake.arg0_val);
 }
 
 int main(void) {

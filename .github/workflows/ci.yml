@@ -1,10 +1,6 @@
 name: C/C++ CI
 
-on:
-  push:
-    branches: [ preprelease ]
-  pull_request:
-    branches: [ prerelease ]
+on: [push, pull_request]
 
 jobs:
   build_and_test:

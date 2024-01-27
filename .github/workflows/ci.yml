@@ -1,10 +1,6 @@
 name: C/C++ CI
 
-on:
-  push:
-    branches: [ develop ]
-  pull_request:
-    branches: [ develop ]
+on: [push, pull_request]
 
 jobs:
   build_and_test:
@@ -22,8 +18,10 @@ jobs:
         make all
         make coverage
 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v2
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       with:
         files: ./build/gcov/*.gcov
         flags: unittests

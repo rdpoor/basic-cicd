@@ -23,7 +23,7 @@ jobs:
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       with:
-        files: ./build/gcov/*.gcov
+        files: /home/runner/work/basic-cicd/basic-cicd/build/gcov/*.gcov
         flags: unittests
         name: codecov-umbrella
         fail_ci_if_error: true

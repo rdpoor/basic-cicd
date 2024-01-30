@@ -18,6 +18,9 @@ jobs:
         make all
         make coverage
 
+    - name: List coverage reports
+      run: ls ./build/gcov/
+
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
       env:
@@ -27,4 +30,3 @@ jobs:
         flags: unittests
         name: codecov-umbrella
         fail_ci_if_error: true
-        verbose: true

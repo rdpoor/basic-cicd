@@ -19,7 +19,7 @@ jobs:
         make coverage
 
     - name: List coverage reports
-      run: ls ./build/gcov/
+      run: ls ./build/gcov/*.gcov
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
